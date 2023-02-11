@@ -1,0 +1,30 @@
+---
+- name: Add users to sudoers file
+  hosts: dnsmasq
+  become: yes
+  vars:
+    users:
+      - user1
+      - user2
+
+  tasks:
+  - name: Create the sudoers files
+    file:
+      path: "/etc/sudoers.d/{{ item }}"
+      state: touch
+      mode: '0440'
+    with_items: "{{ users }}"
+
+  - name: Add users to sudoers file
+    lineinfile:
+      dest: "/etc/sudoers.d/{{ item }}"
+      line: "{{ item }} ALL=(ALL) NOPASSWD: ALL"
+    with_items: "{{ users }}"
+
+  - name: Ensure sudoers files have proper permissions
+    file:
+      path: "/etc/sudoers.d/{{ item }}"
+      state: file
+      mode: 0440
+    with_items: "{{ users }}"
+
