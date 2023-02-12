@@ -10,7 +10,7 @@
    notify:
      - restart nginx service
 
- - name: 'Add the official docker repo'
+ - name: 'Add the official nginx repo'
    apt_repository:
      repo: 'deb http://nginx.org/packages/{{ ansible_distribution|lower }}/ {{ ansible_distribution_release|lower }} nginx'
      state: 'present'

@@ -1,0 +1,6 @@
+---
+- name: Enable and start PHP-FPM service
+  systemd:
+    name: "php8.1-fpm.service"
+    enabled: true
+    state: started

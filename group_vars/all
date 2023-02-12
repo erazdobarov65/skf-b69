@@ -1,0 +1,6 @@
+nginx:
+  phpsites:
+    ansible:
+      name: ansible.com
+      port: 80
+      doc_root: /opt/nginx/ansible/
