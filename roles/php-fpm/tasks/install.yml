@@ -1,0 +1,12 @@
+---
+- name: "Install php packages"
+  apt:
+    pkg:
+      - php-common
+      - php-curl
+      - php-mysql
+      - php-cli
+      - php-gd
+      - php-memcache
+      - php-fpm
+    state: present
